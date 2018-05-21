@@ -1,0 +1,25 @@
+.panel {
+    border: solid 1px #AAA;
+    padding: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.20);
+    background-color: #303030;
+}
+
+html,body {
+	padding-top : 75px;
+    height: 100%;
+    background-image : linear-gradient(to top left, #000, #202020 100%);
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	color : white ;
+}
+
+legend {
+	border-bottom : 1px solid #fff ;
+	margin-bottom : 25px ;
+}
+
+.myInput,myInput:focus{
+    background-color : #fff8 !important;
+    color : black  ;
+}
