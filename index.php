@@ -55,25 +55,51 @@
             <br/>
 
             <?php 
+				
 				if(isset($_POST['cmd'])){
-					$cmd =$_POST['cmd'];
+					$cmd = $_POST['cmd'];
 							
 					echo "
-                      <div class='row '>
-                          <div class='col-xs-2 col-sm-2 col-md-3 col-lg-3'></div>
+						<div class='row '>
+							<div class='col-xs-2 col-sm-2 col-md-3 col-lg-3'></div>
 
-                          <div class='col-xs-8 col-sm-8 col-md-6 col-lg-6 panel'>
+							<div class='col-xs-8 col-sm-8 col-md-6 col-lg-6 panel'>
 
-                              <legend>Résultat : '". $cmd ."' </legend>
+								<legend>Résultat : '". htmlentities($cmd) ."' </legend>
+							  
+								<center>
+									<table class='table table-bordered table-responsive'>
+										<thead class='thead-light'>
+											<tr>
+												<th class='ligne'> Lignes </th>
+												<th class='value'> Sortie écran </th>
+											</tr>
+										</thead>
+										<tbody>
 					";
 							
-							
+					$locale='fr_FR.UTF-8';
+					setlocale(LC_ALL,$locale);
+					putenv('LC_ALL='.$locale);	
+					
 					exec($cmd, $out);
 					foreach ($out as $clef => $val ){
-						echo utf8_encode($clef . " : " .$val ."<br/>") ;
+						if($val != ""){
+							echo "	<tr> 
+									<td class='ligne'>" . $clef . " : " . "</td>
+							";
+							
+							echo "<td class='value'>" . htmlentities(mb_convert_encoding($val,"UTF-8"))."</td>" ;
+							echo "</tr>";
+						}
 					}	
                   	
-                  	echo "<div class='col-xs-2 col-sm-2 col-md-3 col-lg-3'></div> </div>";
+					echo "				</tbody>
+									</table>
+								</center>
+							<div class='col-xs-2 col-sm-2 col-md-3 col-lg-3'></div>
+						</div>
+					";
 				}
 							
 			?>
